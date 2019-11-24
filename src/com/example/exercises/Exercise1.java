@@ -21,7 +21,7 @@ public class Exercise1 {
 	private static final MovieService movieService = InMemoryMovieService.getInstance();
 
 	public static void main(String[] args) {
-		// Find the number of movies of each director
+	// Find the number of movies of each director
         final Collection<Movie> movies = movieService.findAllMovies();
         final Map<String, Long> directorMovieCounts =
                 movies.stream()
