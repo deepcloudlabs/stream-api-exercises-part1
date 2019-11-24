@@ -38,3 +38,8 @@ in each continent.
 **Q.17)** Find the minimum, the maximum, the average, and the standard deviation of GNP values.
 
 **Q.18)** Find the year where the maximum number of movie is available
+
+**For Part II** : https://github.com/deepcloudlabs/stream-api-exercises-part2.git
+
+**For Part III** : https://github.com/deepcloudlabs/stream-api-exercises-part3.git
+
