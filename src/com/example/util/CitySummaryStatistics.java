@@ -6,9 +6,7 @@ import java.util.function.Consumer;
 import com.example.domain.City;
 
 /**
- * 
  * @author Binnur Kurt <binnur.kurt@gmail.com>
- *
  */
 public class CitySummaryStatistics implements Consumer<City> {
     private Comparator<City> comparator;

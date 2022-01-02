@@ -7,9 +7,7 @@ import com.example.domain.City;
 import com.example.domain.Country;
 
 /**
- * 
  * @author Binnur Kurt <binnur.kurt@gmail.com>
- *
  */
 public class CountryCitySummaryStatistics implements Consumer<Country> {
     private City min;
@@ -23,8 +21,9 @@ public class CountryCitySummaryStatistics implements Consumer<Country> {
     public void accept(Country country) {
         Supplier<CitySummaryStatistics> citySummaryStatisticsSupplier=
                 () -> new CitySummaryStatistics((l,r)-> Long.compare(l.getPopulation(),r.getPopulation()));
-        CitySummaryStatistics css= country.getCities().stream()
-                .collect(citySummaryStatisticsSupplier,CitySummaryStatistics::accept,CitySummaryStatistics::combine);
+        var css= country.getCities()
+        		        .stream()
+                        .collect(citySummaryStatisticsSupplier,CitySummaryStatistics::accept,CitySummaryStatistics::combine);
         min= css.getMin();
         max= css.getMax();
         count= css.getCount();

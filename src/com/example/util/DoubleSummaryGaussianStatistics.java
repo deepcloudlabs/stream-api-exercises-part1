@@ -3,9 +3,7 @@ package com.example.util;
 import java.util.DoubleSummaryStatistics;
 
 /**
- * 
  * @author Binnur Kurt <binnur.kurt@gmail.com>
- *
  */
 public class DoubleSummaryGaussianStatistics extends DoubleSummaryStatistics {
     private double variance;
