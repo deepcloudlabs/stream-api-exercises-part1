@@ -1,11 +1,8 @@
 package com.example.exercises;
 
-import static java.lang.System.out;
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.groupingBy;
-
 import java.util.Collection;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.example.domain.Director;
 import com.example.domain.Movie;
@@ -21,14 +18,18 @@ public class Exercise1 {
 	private static final MovieService movieService = InMemoryMovieService.getInstance();
 
 	public static void main(String[] args) {
-	// Find the number of movies of each director
+		// Find the number of movies of each director
         final Collection<Movie> movies = movieService.findAllMovies();
-        final Map<String, Long> directorMovieCounts =
-                movies.stream()
-                        .map(Movie::getDirectors)
-                        .flatMap(Collection::stream)
-                        .collect(groupingBy(Director::getName, counting()));
-        directorMovieCounts.entrySet().forEach(out::println);
+        Map<String,Long> dirMovCounts = 
+        movies.stream().map(Movie::getDirectors)
+        			   .flatMap(Collection::stream)
+                       .collect(Collectors.groupingBy(
+                    		       Director::getName,
+                    		       Collectors.counting()
+                    		     )
+                        );
+        dirMovCounts.forEach(
+        		(name,count) -> System.out.printf("%20s: %3d\n",name,count));
 	}
 
 }

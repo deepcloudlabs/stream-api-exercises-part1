@@ -1,17 +1,13 @@
 package com.example.exercises;
 
+import java.util.Comparator;
 import java.util.Objects;
-import java.util.Optional;
 
 import com.example.dao.CityDao;
 import com.example.dao.CountryDao;
 import com.example.dao.InMemoryWorldDao;
 import com.example.domain.City;
 import com.example.domain.Country;
-
-import static java.lang.System.out;
-import static java.util.Comparator.comparing;
-import static java.util.stream.Collectors.maxBy;
 
 /**
  * 
@@ -24,13 +20,15 @@ public class Exercise4 {
 
 	public static void main(String[] args) {
 		// Find the highest populated capital city
-        final Optional<City> capital = countryDao.findAllCountries()
-                .stream()
-                .map(Country::getCapital)
-                .map(cityDao::findCityById)
-                .filter(Objects::nonNull)
-                .collect(maxBy(comparing(City::getPopulation)));
-        capital.ifPresent(out::println);
+		var highPopulatedCapitalCity = 
+				countryDao.findAllCountries()
+				          .stream()
+				          .map(Country::getCapital)
+				          .filter(Objects::nonNull)
+				          .map(cityDao::findCityById)
+				          .filter(Objects::nonNull)
+				          .max(Comparator.comparing(City::getPopulation));
+		highPopulatedCapitalCity.ifPresent(System.out::println);		          
 	}
 
 }
