@@ -1,10 +1,10 @@
 package com.example.exercises;
 
-import java.util.Map;
+import static java.util.stream.Collector.of;
+import static java.util.stream.Collectors.groupingBy;
+
 import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 import com.example.dao.InMemoryWorldDao;
 import com.example.dao.WorldDao;
@@ -20,20 +20,16 @@ public class Exercise16 {
 	private static final WorldDao worldDao = InMemoryWorldDao.getInstance();
 
 	private static final BiConsumer<CountryCitySummaryStatistics, Country> accumulator = (s, c) -> s.accept(c);
-	private static final BinaryOperator<CountryCitySummaryStatistics> combiner = (l, r) -> {
-		l.combine(r);
-		return l;
-	};
-	private static final BiConsumer<String, CountryCitySummaryStatistics> printEntry = (country,
-			statistics) -> System.out.println(String.format("%s: %s", country, statistics));
+	private static final BinaryOperator<CountryCitySummaryStatistics> combiner = (l, r) -> { l.combine(r); return l; };
+	private static final BiConsumer<String, CountryCitySummaryStatistics> printEntry = 
+			(country,statistics) -> System.out.printf("%s: %s\n", country, statistics);
 
 	public static void main(String[] args) {
 		// Find the cities with the minimum and the maximum population in countries.
-
-		final Map<String, CountryCitySummaryStatistics> countryCityStatistics = worldDao.findAllCountries().stream()
-				.collect(Collectors.groupingBy(Country::getCode,
-						Collector.of(CountryCitySummaryStatistics::new, accumulator, combiner)));
+		var countryCityStatistics = 
+		worldDao.findAllCountries()
+				.stream()
+				.collect(groupingBy(Country::getCode, of(CountryCitySummaryStatistics::new, accumulator, combiner)));
 		countryCityStatistics.forEach(printEntry);
 	}
-
 }

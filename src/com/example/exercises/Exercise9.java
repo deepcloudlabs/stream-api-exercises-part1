@@ -3,7 +3,6 @@ package com.example.exercises;
 import static java.lang.System.out;
 import static java.util.Comparator.comparingDouble;
 
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.function.Predicate;
 

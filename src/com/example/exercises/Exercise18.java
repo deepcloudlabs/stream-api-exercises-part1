@@ -1,9 +1,8 @@
 package com.example.exercises;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import static java.util.Map.Entry.comparingByValue;
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
 
 import com.example.domain.Movie;
 import com.example.service.InMemoryMovieService;
@@ -19,9 +18,13 @@ public class Exercise18 {
 
 	public static void main(String[] args) {
 		// Find the year where the maximum number of movie is available
-        Collection<Movie> movies = movieService.findAllMovies();
-        final Optional<Map.Entry<Integer,Long>> maxMovieCountByYear = movies.stream().collect(Collectors.groupingBy(Movie::getYear,Collectors.counting()))
-        		.entrySet().stream().max(Map.Entry.comparingByValue());
+        var movies = movieService.findAllMovies();
+        var maxMovieCountByYear = 
+          movies.stream()
+                .collect(groupingBy(Movie::getYear,counting()))
+        		.entrySet()
+        		.stream()
+        		.max(comparingByValue());
         maxMovieCountByYear.ifPresent(System.out::println);
 	}
 

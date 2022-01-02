@@ -15,7 +15,7 @@ public class Exercise17 {
 
 	public static void main(String[] args) {
 		// Find the minimum, the maximum, the average, and the standard deviation of GNP values.
-        final DoubleSummaryGaussianStatistics gnpStatistics =
+        var gnpStatistics =
            worldDao.findAllCountries()
                    .stream()
                    .mapToDouble(Country::getGnp)
