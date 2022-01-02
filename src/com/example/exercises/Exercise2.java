@@ -21,8 +21,8 @@ public class Exercise2 {
 				          .stream()
 				          .map( country -> country.getCities().stream().map(city -> new ContinentCityPair(country.getContinent(),city)).toList())
 				          .flatMap(Collection::stream)
-				          .collect(Collectors.groupingBy(ContinentCityPair::continent,Collectors.maxBy( (p1,p2) -> p1.city().getPopulation()-p2.city().getPopulation())));
-		highPopulatedCityOfEachContinent.forEach((continent,city)->System.out.printf("%s: %s\n",continent,city.get()));
+				          .collect(Collectors.groupingBy(ContinentCityPair::continent,Collectors.maxBy( ContinentCityPair::compareTo )));
+		highPopulatedCityOfEachContinent.forEach(ContinentCityPair::printEntry);
 	}
 
 }
