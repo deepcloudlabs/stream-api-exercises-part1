@@ -1,8 +1,8 @@
 ### Stream API Exercises : Part I
 
-**Q.1)** Find the most populated city of each continent
+**Q.1)** Find the number of movies of each director
 
-**Q.2)** Find the number of movies of each director
+**Q.2)** Find the most populated city of each continent
 
 **Q.3)** Find the number of genres of each director's movies
 
