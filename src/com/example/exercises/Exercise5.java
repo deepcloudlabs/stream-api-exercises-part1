@@ -28,7 +28,7 @@ public class Exercise5 {
 				          .map(country -> new ContinentCityPair(country.getContinent(),cityDao.findCityById(country.getCapital())))
 				          .filter(pair -> Objects.nonNull(pair.city()))
 				          .collect(Collectors.groupingBy(ContinentCityPair::continent,Collectors.maxBy(Comparator.comparing(extractCity.andThen(City::getPopulation)))));
-		highPopulatedCapitalCityOfEachContinent.forEach((continent,pair) -> System.out.printf("%s: %s\n",continent,pair.get().city()));	
+		highPopulatedCapitalCityOfEachContinent.forEach((continent,pair) -> pair.ifPresent( _pair -> System.out.printf("%s: %s\n",continent,_pair.city())));
 	}
 
 }

@@ -18,7 +18,7 @@ import com.example.domain.Country;
  */
 public class Exercise10 {
 	private static final WorldDao worldDao = InMemoryWorldDao.getInstance();
-	private static final BiConsumer<String,Optional<Country>> printEntry = (continent,country) -> System.out.printf("%s: %s\n",continent,country.get());		
+	private static final BiConsumer<String,Optional<Country>> printEntry = (continent,country) -> country.ifPresent(countryFound ->System.out.printf("%s: %s\n",continent,countryFound));
 	public static void main(String[] args) {
 		// Find the richest country of each continent with respect to their GNP (Gross National Product) values.
         var richestCountryByContinent =

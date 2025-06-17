@@ -1,5 +1,6 @@
 package com.example.exercises;
 
+import java.util.HashSet;
 import java.util.List;
 
 import com.example.service.InMemoryMovieService;
@@ -21,7 +22,7 @@ public class Exercise7 {
 		movieService.findAllMovies()
 		            .stream()
 		            .filter( movie -> movie.getGenres().size() == 2)
-		            .filter( movie -> movie.getGenres().containsAll(listOfGenres))
+		            .filter( movie -> new HashSet<>(listOfGenres).containsAll(movie.getGenres()))
 		            .toList();
 		moviesInDramaAndComedyOnly.forEach(movie -> System.out.printf("%s %s\n",movie,movie.getGenres()));
 	}

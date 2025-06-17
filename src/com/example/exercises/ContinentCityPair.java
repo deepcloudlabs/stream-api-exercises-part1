@@ -15,7 +15,7 @@ public record ContinentCityPair(String continent,City city) implements Comparabl
 	}
 
 	public static void printEntry(String continent,Optional<ContinentCityPair> pair) {
-		System.out.printf("%s: %s\n",continent,pair.get().city());
+		pair.ifPresent(_pair -> System.out.printf("%s: %s\n",continent,_pair.city()));
 	}
 
 }

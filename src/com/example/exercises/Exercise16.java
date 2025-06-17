@@ -19,7 +19,7 @@ import com.example.util.CountryCitySummaryStatistics;
 public class Exercise16 {
 	private static final WorldDao worldDao = InMemoryWorldDao.getInstance();
 
-	private static final BiConsumer<CountryCitySummaryStatistics, Country> accumulator = (s, c) -> s.accept(c);
+	private static final BiConsumer<CountryCitySummaryStatistics, Country> accumulator = CountryCitySummaryStatistics::accept;
 	private static final BinaryOperator<CountryCitySummaryStatistics> combiner = (l, r) -> { l.combine(r); return l; };
 	private static final BiConsumer<String, CountryCitySummaryStatistics> printEntry = 
 			(country,statistics) -> System.out.printf("%s: %s\n", country, statistics);

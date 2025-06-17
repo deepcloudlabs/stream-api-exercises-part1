@@ -24,7 +24,6 @@ public class Exercise4 {
 				countryDao.findAllCountries()
 				          .stream()
 				          .map(Country::getCapital)
-				          .filter(Objects::nonNull)
 				          .map(cityDao::findCityById)
 				          .filter(Objects::nonNull)
 				          .max(Comparator.comparing(City::getPopulation));

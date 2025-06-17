@@ -16,11 +16,11 @@ public class Exercise6 {
 
 	public static void main(String[] args) {
 		// Sort the countries by number of their cities in descending order
-		Function<CountryCityCountPair, Integer> countExtracter = CountryCityCountPair::count;
+		Function<CountryCityCountPair, Integer> countExtracted = CountryCityCountPair::count;
 		var countriesWithCityCountInDescOrder = countryDao.findAllCountries()
 		          .stream()
 		          .map(country -> new CountryCityCountPair(country,country.getCities().size()))
-		          .sorted(Comparator.comparing(countExtracter).reversed())
+		          .sorted(Comparator.comparing(countExtracted).reversed())
 		          .toList();
 		countriesWithCityCountInDescOrder.forEach(System.out::println);
 	}

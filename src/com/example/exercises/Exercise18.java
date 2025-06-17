@@ -17,7 +17,7 @@ public class Exercise18 {
 	private static final  MovieService movieService = InMemoryMovieService.getInstance();
 
 	public static void main(String[] args) {
-		// Find the year where the maximum number of movie is available
+		// Find the year when the maximum number of movies is available
         var movies = movieService.findAllMovies();
         var maxMovieCountByYear = 
           movies.stream()

@@ -1,5 +1,6 @@
 package com.example.util;
 
+import java.util.Comparator;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -20,7 +21,7 @@ public class CountryCitySummaryStatistics implements Consumer<Country> {
     @Override
     public void accept(Country country) {
         Supplier<CitySummaryStatistics> citySummaryStatisticsSupplier=
-                () -> new CitySummaryStatistics((l,r)-> Long.compare(l.getPopulation(),r.getPopulation()));
+                () -> new CitySummaryStatistics(Comparator.comparingLong(City::getPopulation));
         var css= country.getCities()
         		        .stream()
                         .collect(citySummaryStatisticsSupplier,CitySummaryStatistics::accept,CitySummaryStatistics::combine);
