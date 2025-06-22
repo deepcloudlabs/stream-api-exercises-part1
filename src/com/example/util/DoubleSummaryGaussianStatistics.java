@@ -6,7 +6,6 @@ import java.util.DoubleSummaryStatistics;
  * @author Binnur Kurt <binnur.kurt@gmail.com>
  */
 public class DoubleSummaryGaussianStatistics extends DoubleSummaryStatistics {
-    private double stdVariance;
     private double Mk;
     private double Qk;
 
@@ -18,8 +17,8 @@ public class DoubleSummaryGaussianStatistics extends DoubleSummaryStatistics {
             Qk = 0.;
         } else {
             double difference = value - Mk;
-            Mk += difference/getCount();
-            Qk += ((getCount()-1)*difference*difference)/getCount();
+            Mk += difference / getCount();
+            Qk += ((getCount() - 1) * difference * difference) / getCount();
         }
     }
 
@@ -29,13 +28,11 @@ public class DoubleSummaryGaussianStatistics extends DoubleSummaryStatistics {
     }
 
     public double getVariance() {
-        double variance = Qk / (getCount() - 1);
-        return variance;
+        return Qk / (getCount() - 1);
     }
 
     public double getStdVariance() {
-        stdVariance= Math.sqrt (Qk/getCount());
-        return stdVariance;
+        return Math.sqrt(Qk / getCount());
     }
 
     @Override
@@ -43,6 +40,6 @@ public class DoubleSummaryGaussianStatistics extends DoubleSummaryStatistics {
         return "DoubleSummaryGaussianStatistics{" +
                 "variance=" + getVariance() +
                 ", stdVariance=" + getStdVariance() +
-                "}\n"+super.toString();
+                "}\n" + super.toString();
     }
 }

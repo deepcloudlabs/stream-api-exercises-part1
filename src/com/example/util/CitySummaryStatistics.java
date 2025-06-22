@@ -1,9 +1,9 @@
 package com.example.util;
 
+import com.example.domain.City;
+
 import java.util.Comparator;
 import java.util.function.Consumer;
-
-import com.example.domain.City;
 
 /**
  * @author Binnur Kurt <binnur.kurt@gmail.com>
@@ -23,14 +23,14 @@ public class CitySummaryStatistics implements Consumer<City> {
 
     @Override
     public void accept(City city) {
-        count ++;
-        min = min!=null && comparator.compare(min,city)<=0 ? min : city;
-        max = max!=null && comparator.compare(max,city)>=0 ? max : city;
+        count++;
+        min = min != null && comparator.compare(min, city) <= 0 ? min : city;
+        max = max != null && comparator.compare(max, city) >= 0 ? max : city;
     }
 
     public void combine(CitySummaryStatistics other) {
-        this.min= comparator.compare(this.min,other.min)<=0 ? this.min : other.min;
-        this.max= comparator.compare(this.max,other.max)>=0 ? this.max : other.max;
+        this.min = comparator.compare(this.min, other.min) <= 0 ? this.min : other.min;
+        this.max = comparator.compare(this.max, other.max) >= 0 ? this.max : other.max;
     }
 
     public City getMin() {

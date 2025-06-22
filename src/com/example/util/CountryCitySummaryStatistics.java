@@ -1,11 +1,11 @@
 package com.example.util;
 
+import com.example.domain.City;
+import com.example.domain.Country;
+
 import java.util.Comparator;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
-
-import com.example.domain.City;
-import com.example.domain.Country;
 
 /**
  * @author Binnur Kurt <binnur.kurt@gmail.com>
@@ -20,14 +20,14 @@ public class CountryCitySummaryStatistics implements Consumer<Country> {
 
     @Override
     public void accept(Country country) {
-        Supplier<CitySummaryStatistics> citySummaryStatisticsSupplier=
+        Supplier<CitySummaryStatistics> citySummaryStatisticsSupplier =
                 () -> new CitySummaryStatistics(Comparator.comparingLong(City::getPopulation));
-        var css= country.getCities()
-        		        .stream()
-                        .collect(citySummaryStatisticsSupplier,CitySummaryStatistics::accept,CitySummaryStatistics::combine);
-        min= css.getMin();
-        max= css.getMax();
-        count= css.getCount();
+        var css = country.getCities()
+                .stream()
+                .collect(citySummaryStatisticsSupplier, CitySummaryStatistics::accept, CitySummaryStatistics::combine);
+        min = css.getMin();
+        max = css.getMax();
+        count = css.getCount();
     }
 
     public void combine(CountryCitySummaryStatistics other) {

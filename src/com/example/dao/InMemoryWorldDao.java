@@ -15,9 +15,9 @@ import com.example.domain.Country;
  * @author Binnur Kurt (binnur.kurt@gmail.com)
  */
 public class InMemoryWorldDao implements WorldDao {
-	private Map<String, Country> countries;
-	private Map<Integer, City> cities;
-	private Set<String> continents;
+	private final Map<String, Country> countries;
+	private final Map<Integer, City> cities;
+	private final Set<String> continents;
 
 	public void createCities1() {
 		cities.put(1, new City(1, "Kabul", "AFG", 1780000));
