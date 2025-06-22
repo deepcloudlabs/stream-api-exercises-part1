@@ -59,10 +59,8 @@ public class Director {
 		if (getClass() != obj.getClass())
 			return false;
 		Director other = (Director) obj;
-		if (id != other.id)
-			return false;
-		return true;
-	}
+        return id == other.id;
+    }
 
 	@Override
 	public String toString() {

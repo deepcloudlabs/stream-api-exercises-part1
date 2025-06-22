@@ -15,7 +15,7 @@ public class Country {
 	private int population;
 	private double gnp;
 	private int capital;
-	private List<City> cities;
+	private final List<City> cities;
 	{
 		cities = new ArrayList<>();
 	}
@@ -112,12 +112,9 @@ public class Country {
 			return false;
 		Country other = (Country) obj;
 		if (code == null) {
-			if (other.code != null)
-				return false;
-		} else if (!code.equals(other.code))
-			return false;
-		return true;
-	}
+            return other.code == null;
+		} else return code.equals(other.code);
+    }
 
 	@Override
 	public String toString() {

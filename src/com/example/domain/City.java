@@ -4,14 +4,11 @@ package com.example.domain;
  *
  * @author Binnur Kurt (binnur.kurt@gmail.com)
  */
-public class City {
+public final class City {
 	private int id;
 	private String name;
 	private int population;
 	private String countryCode;
-
-	public City() {
-	}
 
 	public City(int id, String name, String countryCode, int population) {
 		this.id = id;
