@@ -1,16 +1,16 @@
 package com.example.exercises;
 
-import static java.util.Comparator.comparingInt;
-import static java.util.stream.Collectors.groupingBy;
+import com.example.dao.CountryDao;
+import com.example.dao.InMemoryWorldDao;
+import com.example.domain.Country;
 
 import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.ToIntFunction;
 
-import com.example.dao.CountryDao;
-import com.example.dao.InMemoryWorldDao;
-import com.example.domain.Country;
+import static java.util.Comparator.comparingInt;
+import static java.util.stream.Collectors.groupingBy;
 
 /**
  * @author Binnur Kurt <binnur.kurt@gmail.com>

@@ -1,17 +1,17 @@
 package com.example.exercises;
 
-import static java.util.stream.Collector.of;
-import static java.util.stream.Collectors.groupingBy;
+import com.example.dao.InMemoryWorldDao;
+import com.example.dao.WorldDao;
+import com.example.domain.Country;
+import com.example.util.CountrySummaryStatistics;
 
 import java.util.Comparator;
 import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
 import java.util.function.Supplier;
 
-import com.example.dao.InMemoryWorldDao;
-import com.example.dao.WorldDao;
-import com.example.domain.Country;
-import com.example.util.CountrySummaryStatistics;
+import static java.util.stream.Collector.of;
+import static java.util.stream.Collectors.groupingBy;
 
 /**
  * @author Binnur Kurt <binnur.kurt@gmail.com>
