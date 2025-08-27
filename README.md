@@ -43,3 +43,7 @@ in each continent.
 
 **For Part III** : https://github.com/deepcloudlabs/stream-api-exercises-part3.git
 
+```
+SDK: Java 17<br>
+Language level: Sealed types, always-strict floating-point semantics
+```
